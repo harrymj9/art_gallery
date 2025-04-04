@@ -6,18 +6,18 @@ require_once '../includes/config.php';
 if (isset($_GET['id_warehouses'])) {
     $id_warehouses = $_GET['id_warehouses'];
 
-    // Récupérer l'entrepôt depuis la base de données
+    // Récupére l'entrepôt depuis la base de données
     $query = $pdo->prepare("SELECT * FROM warehouses WHERE id_warehouses = ?");
     $query->execute([$id_warehouses]);
     $warehouse = $query->fetch(PDO::FETCH_ASSOC);
 
     if (!$warehouse) {
-        // Si l'entrepôt n'existe pas, rediriger vers la page principale
+        // Si l'entrepôt n'existe pas, il redirigera  vers la page principale
         header('Location: index.php');
         exit();
     }
 } else {
-    // Si l'ID n'est pas passé dans l'URL, rediriger vers la page principale
+    // Si l'ID n'est pas passé dans l'URL,il redirigera vers la page principale
     header('Location: index.php');
     exit();
 }
