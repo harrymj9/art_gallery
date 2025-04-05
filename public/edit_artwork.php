@@ -26,7 +26,7 @@ if (isset($_GET['id_artworks'])) {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $title = $_POST['title'];
     $year = $_POST['year'];
-    $artist = $_POST['artist'];  // Remplacement de artist_name par artist
+    $artist = $_POST['artist'];  
     $width = $_POST['width'];
     $height = $_POST['height'];
 
@@ -46,51 +46,89 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Artwork</title>
-    <!-- Lien vers le CSS de Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- le CSS intégré -->
+    <style>
+        body {
+            background-color: #F9C784;
+            color: #4E598C;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #FFFFFF;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+        }
+
+        h1 {
+            color: #4E598C;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: #4E598C;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #3A4A6B;
+        }
+
+        .form-control {
+            border: 1px solid #4E598C;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center">Edit Artwork</h1>
+    <div class="container">
+        <h1>Edit Artwork</h1>
 
-        <!-- Formulaire de modification de l'œuvre -->
+        <!-- le formulaire de modification de l'œuvre -->
         <form action="edit_artwork.php?id_artworks=<?php echo $artwork['id_artworks']; ?>" method="POST">
-            <div class="form-group">
-                <label for="title">Title:</label>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
                 <input type="text" id="title" name="title" class="form-control" value="<?php echo htmlspecialchars($artwork['title']); ?>" required>
             </div>
             
-            <div class="form-group">
-                <label for="year">Year:</label>
+            <div class="mb-3">
+                <label for="year" class="form-label">Year:</label>
                 <input type="number" id="year" name="year" class="form-control" value="<?php echo htmlspecialchars($artwork['year']); ?>" required>
             </div>
 
-            <div class="form-group">
-                <label for="artist">Artist:</label> <!-- Changement ici, il doit rester "artist" -->
+            <div class="mb-3">
+                <label for="artist" class="form-label">Artist:</label>
                 <input type="text" id="artist" name="artist" class="form-control" value="<?php echo htmlspecialchars($artwork['artist']); ?>" required>
             </div>
 
-            <div class="form-group">
-                <label for="width">Width (in cm):</label>
+            <div class="mb-3">
+                <label for="width" class="form-label">Width (in cm):</label>
                 <input type="number" step="0.01" id="width" name="width" class="form-control" value="<?php echo htmlspecialchars($artwork['width']); ?>" required>
             </div>
 
-            <div class="form-group">
-                <label for="height">Height (in cm):</label>
+            <div class="mb-3">
+                <label for="height" class="form-label">Height (in cm):</label>
                 <input type="number" step="0.01" id="height" name="height" class="form-control" value="<?php echo htmlspecialchars($artwork['height']); ?>" required>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-block">Update Artwork</button>
+            <button type="submit" class="btn btn-primary w-100">Update Artwork</button>
         </form>
 
-        <!-- Bouton de retour -->
+        <!-- le bouton de retour -->
         <div class="mt-3">
-            <a href="index.php" class="btn btn-secondary btn-block">Back to Dashboard</a>
+            <a href="index.php" class="btn btn-secondary w-100">Back to Dashboard</a>
         </div>
     </div>
-
-    <!-- Lien vers les scripts Bootstrap -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
